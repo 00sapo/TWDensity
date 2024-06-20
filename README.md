@@ -36,7 +36,7 @@ You can also customize the window size for density calculation by defining a new
 named `densitywindow`.
 
 To update the `density` value, simply run `twdensity` command. You can also run it as a
-hook of `on-add` and `on-modify` events.
+hook on `on-exit`.
 
 ## Example configuration
 
