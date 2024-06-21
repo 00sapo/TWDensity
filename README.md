@@ -1,26 +1,29 @@
 # TWDensity
 
-Update TaskWarrior task urgency based on the density of task dues in time
-
 This is a simple Python script that analyzes the due dates of your tasks and counts how
 many tasks have a due date in a window of time. For each task, the `density` value is
 the number of tasks that have a due date near to him (i.e. in the interval [due-window, due+window]).
 
 You can define the urgency for each density level, so the urgency of a task will
-take into account the density of tasks around it.
+take into account the number of tasks that have a similar due date.
 
-You don't need to define the due date of all your tasks, but just the ones that are
+> **This script takes into account dependencies.**
+> 
+> You don't need to define the due date of all your tasks, but just the ones that are
 milestones. Then, you can set dependencies of the other tasks on the milestones.
 
-**This script takes into account dependencies.**
 
+## Why?
 This is a simple method to add a time estimate to your tasks:
 
 1. you split your tasks in smaller tasks, all requiring about the same time effort
-2. you can create multiple sub-level of time effort with your UDA (e.g. writing an email
-   is usally a light task, while writing a report is a heavy task)
-   project)
-3. you set the due date of your tasks
+2. you set the due date of your tasks
+   - For this, I recommend using milestones and dependencies with
+   ```
+   urgency.blocking.coefficient=1
+   urgency.blocked.coefficient=0
+   urgency.inherit=1
+   ```    
 
 ## Installation
 
@@ -35,7 +38,9 @@ level.
 You can also customize the window size for density calculation by defining a new UDA
 named `densitywindow`.
 
-To update the `density` value, simply run `twdensity` command. You can also run it as a
+To update the `density` value, simply run `twdensity` command. 
+
+*In future*, you should also be able to use it as a
 hook on `on-exit`.
 
 ## Example configuration
